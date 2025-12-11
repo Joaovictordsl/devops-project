@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"devops-project/test"
+	"fmt"
+)
 
 type Carro struct {
 	marca  string
@@ -11,4 +14,6 @@ var carro1 = Carro{"Porche", "911 carrera"}
 
 func main() {
 	fmt.Println(carro1.marca)
+	fmt.Println(test.Test(1))
+
 }

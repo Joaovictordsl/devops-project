@@ -1,7 +1,6 @@
 package main
 
 import (
-	"devops-project/test"
 	"fmt"
 )
 
@@ -14,6 +13,5 @@ var carro1 = Carro{"Porche", "911 carrera"}
 
 func main() {
 	fmt.Println(carro1.marca)
-	fmt.Println(test.Test(1))
 
 }

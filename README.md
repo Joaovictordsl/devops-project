@@ -1,17 +1,19 @@
 # DevOps Lab - (Linux/bash, AWS, CI/CD, Terraform)
 
-### This repository is to practice the fundamentals of DevOps
+### This repository is for practicing the fundamentals of DevOps.
 
-First and foremost what is a Container?
+## What is a Container?
 
-Well, a container is basically an isolated process that its running. 
+In short, a container is a **standardized unit of software** that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. 
 
-### What does that even mean?
+Technically speaking, a container is just an **isolated process** running on a host machine.
 
-Well, different than a VM, that simulate and built an entire machine from zero - OS, Kernel, CPU - 
-a container shares the host machine's kernel. But why tho?
+### How does it work under the hood?
 
-Its way lighter to have your whole code, packages, and your entire application that can run everywhere and uses the host machine's CPU and Kernel, than having to create a new one from zero, just to run an application. 
+Unlike a Virtual Machine (VM), which simulates an entire hardware stack — including a full Guest Operating System and Kernel — a container **shares the host machine's kernel**.
 
+**But why use containers instead of VMs?**
 
-
+* **Lightweight:** Containers don't need to boot a whole OS. They start in seconds.
+* **Efficiency:** They use the host's CPU and RAM directly, without the "middleman" (Hypervisor) overhead.
+* **Portability:** Since the container carries its own "world" (libraries and dependencies) inside its Namespaces, it runs the same way on your Mac, on a Linux server, or in the AWS Cloud.

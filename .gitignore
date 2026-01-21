@@ -1,0 +1,10 @@
+# Ignorar a pasta de plugins e módulos (o que está grande)
+.terraform/
+
+# Ignorar arquivos de estado (contêm dados sensíveis)
+*.tfstate
+*.tfstate.*
+
+# Ignorar variáveis sensíveis
+*.tfvars
+*.tfvars.json

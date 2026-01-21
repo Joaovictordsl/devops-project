@@ -3,8 +3,12 @@ provider "aws"{
 }
 
 resource "aws_ecr_repository" "ecr_repository" {
-  
-  
+  name = "ecr_repository"
+  image_tag_imutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 }
 
 resource "aws_security_group" "securitygroup"{
@@ -36,16 +40,4 @@ resource "aws_instance" "server" {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 

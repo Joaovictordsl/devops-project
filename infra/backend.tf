@@ -3,6 +3,6 @@ terraform {
     name = "bucket"
     key  = ""
     region = "us-east-1"
-    profile = ""
+    encrypt = true
   }
 }

@@ -26,7 +26,8 @@ resource "aws_security_group" "securitygroup"{
 resource "aws_instance" "server" {
    ami             = "ami-07ff62358b87c7116"
    instance_type   = "t2.micro"
-}
+   vpc_security_groups_ids = [aws_security_group.securitygroup.id]
+ } 
 
 
 

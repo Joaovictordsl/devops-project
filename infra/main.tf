@@ -2,6 +2,10 @@ provider "aws"{
   region = "us-east-1"
 }
 
+resource "aws_ecr_repository" "ecr_repository" {
+  
+
+}
 
 resource "aws_security_group" "securitygroup"{
   name = "securitygroup"

@@ -4,7 +4,7 @@ provider "aws"{
 
 resource "aws_ecr_repository" "ecr_repository" {
   
-
+  
 }
 
 resource "aws_security_group" "securitygroup"{

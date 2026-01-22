@@ -7,7 +7,7 @@ resource "tls_private_key" "rsa_key" {
 
 resource "aws_key_pair" "key_pair" {
   key_name   = "my-key-terraform"
-  public_key = tls_private_key.rsa_key.public_key_oppenssh
+  public_key = tls_private_key.rsa_key.public_key_openssh
 
 }
 
@@ -21,41 +21,41 @@ resource "local_file" "private_key" {
 
 // SECURITY GROUP - start 
 
-resource "aws_security_group" "security_group"{
-  name = "security_group"
+resource "aws_security_group" "security_group" {
+  name        = "security_group"
   description = "Allow SSH from my IP, HTTP/HTTPS access"
 
   tags = {
-    Name = "website"
+    Name        = "website"
     Provisioned = "terraform"
   }
 
   ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = ["191.185.181.57/32"]
   }
 
   ingress {
-    from_port = 443
-    to_port = 443
-    protocol = "tcp"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
 
   }
 
   ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    from_port = 0 
-    to_port = 65350
-    protocol = "tcp"
+    from_port   = 0
+    to_port     = 65350
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
@@ -70,10 +70,10 @@ resource "aws_security_group" "security_group"{
 // EC2 INSTANCE 
 
 resource "aws_instance" "website-server" {
-  ami           = "ami-07ff62358b87c7116"
-  instance_type = "t2.micro"
-  key_name      = aws_key_pair.key_pair.key_name
-  vpc_security_group_ids = [aws_security_group.security_group.id]  
+  ami                    = "ami-07ff62358b87c7116"
+  instance_type          = "t2.micro"
+  key_name               = aws_key_pair.key_pair.key_name
+  vpc_security_group_ids = [aws_security_group.security_group.id]
 
   tags = {
     Name        = "website-server"

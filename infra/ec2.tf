@@ -23,7 +23,7 @@ resource "local_file" "private_key" {
 
 resource "aws_security_group" "security_group"{
   name = "security_group"
-  description = "Allow SSH and HTTP access"
+  description = "Allow SSH from my IP, HTTP/HTTPS access"
 
   tags = {
     Name = "website"
@@ -34,7 +34,15 @@ resource "aws_security_group" "security_group"{
     from_port = 22
     to_port = 22
     protocol = "tcp"
+    cidr_blocks = ["191.185.181.57/32"]
+  }
+
+  ingress {
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+
   }
 
   ingress {
@@ -65,7 +73,7 @@ resource "aws_instance" "website-server" {
   ami           = "ami-07ff62358b87c7116"
   instance_type = "t2.micro"
   key_name      = aws_key_pair.key_pair.key_name
-  vpc_security_group.ids = [aws_security_group.security_group.id]  
+  vpc_security_group_ids = [aws_security_group.security_group.id]  
 
   tags = {
     Name        = "website-server"
